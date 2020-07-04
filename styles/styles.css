@@ -1,0 +1,49 @@
+img {
+    height: 45px;
+    width: 45px;
+}
+
+li {
+    font-size: 20px;
+}
+
+.table thead th {
+    vertical-align: middle !important;
+}
+
+span {
+    border: 1px solid transparent;
+    padding: 6px 3px;
+}
+
+.genders th {
+    width: 10%;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .genders th {
+        font-size: 13px;
+        width: 75px;
+    }
+  }
+
+@media only screen and (max-width: 768px) {
+    table {
+      font-size: 14px;
+    }
+    .genders th {
+        font-size: 11px;
+        width: 65px;
+    }
+  }
+
+@media only screen and (max-width: 550px) {
+    .hide-sm {
+        display: none !important ; 
+    }
+    .genders th {
+        font-size: 10px;
+        width: 61px;
+    }
+}

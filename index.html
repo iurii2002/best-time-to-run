@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places"></script>
+                                        
+    <title>Best time to run</title>
+</head>
+<body>
+    <header class="text-white bg-secondary py-3">
+        <nav class="nav-menu container-lg navbar navbar-expand-lg navbar-dark">
+            <span class="m-3 h1">Best Time To Run</span>            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-sm-right justify-content-end m-3" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">How does it work?</a>
+                </li>
+              </ul>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <div class="container settings">
+        <div class="container search">
+            <div class="row search-wrapper m-3">
+                <span class="text-secondary mr-1">Your location:</span>
+                <div class="col-sm-7 row">            
+                    <input onClick="this.select();" type="text" class="form-control city-search col-sm-9" placeholder="Enter city" aria-label="City" aria-describedby="button-addon2" id="search-autocomplete">                    
+                </div>
+            </div>
+        </div>
+        <div class="container radio">
+            <div class="row search-wrapper m-3">
+                <span class="text-secondary mr-1">Temp scale:</span>          
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label text-secondary" for="inlineRadio1">°C</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <label class="form-check-label text-secondary" for="inlineRadio2">°F</label>
+                </div>
+                <button class="btn btn-outline-secondary col-sm-2 ml-2" onclick="saveLocalStorage()" type="button" id="button-addon2">Save</button>
+            </div>            
+        </div>        
+    </div>
+
+    <div class="container weather-data text-center">
+        <div class="container today">
+            <h2 class="my-4">Today</h2>
+            <table class="table">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col" rowspan="2">Local <br> Time</th>
+                    <th scope="col" rowspan="2">Temp</th>
+                    <th scope="col" rowspan="2">Feels Like</th>
+                    <th scope="col" rowspan="2">Humidity</th>
+                    <th scope="col" rowspan="2" class="hide-sm">Weather</th>
+                    <th scope="col" colspan="2">Perfomance ceiling, %</th>
+                </tr>
+                <tr class="genders">
+                    <th scope="col">Men</th>
+                    <th scope="col">Women</th>
+                </tr>
+                </thead>
+                <tbody class="today-data">
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div class="container tomorrow">
+            <h2 class="my-4">Tomorrow</h2>
+            <table class="table text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" rowspan="2">Local <br> Time</th>
+                        <th scope="col" rowspan="2">Temp</th>
+                        <th scope="col" rowspan="2">Feels Like</th>
+                        <th scope="col" rowspan="2">Humidity</th>
+                        <th scope="col" rowspan="2">Weather</th>
+                        <th scope="col" colspan="2">Perfomance ceiling, %</th>
+                    </tr>
+                    <tr class="genders">
+                        <th scope="col">Men</th>
+                        <th scope="col">Women</th>
+                    </tr>
+                </thead>
+                <tbody class="tomorrow-data">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <footer class="text-white bg-secondary pt-3 pb-3">
+        <div class="container">
+            <div class="footer row justify-content-center m-2">
+                <div class="contacts card text-white bg-secondary border-0 col-lg-6">
+                    <h4 class="card-title">Contacts</h4>
+                    <div class="card-text">Found a mistake in the data or have any suggestion to improve it, please send a message to <a class="text-white" href ="mailto:iurii.zozulynskyi@gmail.com">iurii.zozulynskyi@gmail.com</a></div>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="card-title">Other platforms</h4>
+                    <div class="card-text">Coming soon</div>
+                </div>
+            </div>
+            <br>
+            <div class="text-center">&#169; 2020 besttimetorun.com</div>
+        </div>       
+    </footer>
+    <script src="./script/app.js" ></script>
+   </body>
+</html>
